@@ -5,7 +5,7 @@ import ProductDetails from './Pages/ProductDetails'
 import Cart from './Pages/Cart'
 import Checkout from './Pages/Checkout'
 
-function App() {git
+function App() {
   return (
    <>
   <NavBar/>
