@@ -1,14 +1,12 @@
-import Greeting from "./Component/Greeting";
-import Header from "./Component/Header";
+import React from 'react'
+import Home from './Pages/Home'
 
 function App() {
   return (
-    <>
-    <h1 className="text-blue-700 text-center text-4xl">Hello React!</h1>;
-    <Header/>
-    <Greeting/>
-    </>
+   <>
+   <Home/>
+   </>
   )
 }
 
-export default App;
+export default App
