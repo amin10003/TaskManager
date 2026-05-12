@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../Services/Api";
+import ProductCard from "@/Component/ProductCard";
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -13,11 +14,15 @@ function Home() {
     fecthProducts();
   }, []);
 
-  console.log(products)
+  console.log(products);
 
   return (
     <>
-      <h1>Products</h1>
+      <div className="grid grid-cols-4 gap-4">
+        {products.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
     </>
   );
 }
