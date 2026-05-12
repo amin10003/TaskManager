@@ -7,10 +7,10 @@ function Navbar() {
 <h1 className="text-xl font-bold">
     E-commerce
 </h1>
-<div className="flex gap-4">
-<Link to ="/" Home></Link>
-<Link to ="/cart" Cart></Link>
-<Link to ="/login" Login></Link>
+<div className="flex gap-4 text-2xl text-white">
+<Link to ="/" Home>Home</Link>
+<Link to ="/cart" Cart>Cart</Link>
+<Link to ="/login" Login>login</Link>
 </div>
     </nav>
   )
