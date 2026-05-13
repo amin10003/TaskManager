@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function ProductCard({ product }) {
   return (
     <div className="border rounded-xl p-4 space-y-4">
@@ -13,8 +15,11 @@ function ProductCard({ product }) {
         <h2 className="font-semibold line-clamp-2">{product.title}</h2>
 
         <p className="text-lg font-bold">${product.price}</p>
-
-        <button className="w-full border rounded-lg py-2">View Details</button>
+        <Link to={`/product/${product.id}`}>
+          <button className="w-full border rounded-lg py-2">
+            View Details
+          </button>
+        </Link>
       </div>
     </div>
   );

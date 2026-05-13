@@ -7,14 +7,19 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fecthProducts = async () => {
-      const data = await getProducts();
+      try {
+        const data = await getProducts();
 
-      setProducts(data);
-
-      setLoading(false);
+        setProducts(data);
+      } catch (error) {
+        setError("Failed To Fetch");
+      } finally {
+        setLoading(false);
+      }
     };
     fecthProducts();
   }, []);
@@ -26,6 +31,9 @@ function Home() {
   console.log(products);
   if (loading) {
     return <h1>Loading products...</h1>;
+  }
+  if (error) {
+    return <h1>{error}</h1>;
   }
 
   return (
