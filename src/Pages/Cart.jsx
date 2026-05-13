@@ -4,18 +4,30 @@ import { CartContext } from "@/Context/CartContext";
 function Cart() {
   const { cartItems } = useContext(CartContext);
 
-  console.log(cartItems);
-
   return (
-    <div>
-      <h1>Cart Page</h1>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6">Cart Items</h1>
 
-      {cartItems.map((item) => (
-        <div key={item.id}>
-          <h2>{item.title}</h2>
-          <div>{item.image}</div>
-        </div>
-      ))}
+      <div className="space-y-4">
+        {cartItems.map((item) => (
+          <div
+            key={item.id}
+            className="border rounded-xl p-4 flex gap-4 items-center"
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="h-24 w-24 object-contain"
+            />
+
+            <div className="space-y-2">
+              <h2 className="font-semibold">{item.title}</h2>
+
+              <p className="font-bold">${item.price}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
