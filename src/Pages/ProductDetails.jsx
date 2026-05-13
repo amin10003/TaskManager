@@ -1,12 +1,15 @@
 import { getSingleProduct } from "@/Services/Api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "@/Context/CartContext";
 
 function ProductDetails() {
   const { productId } = useParams();
 
   const [product, setProduct] = useState(null);
   const [error, setError] = useState("");
+  const { dispatch } = useContext(CartContext);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,7 +50,17 @@ function ProductDetails() {
 
           <h2 className="text-xl font-semibold">${product.price}</h2>
 
-          <button className="border px-6 py-2 rounded-xl">Add To Cart</button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "ADD_TO_CART",
+                payload: product,
+              })
+            }
+            className="border px-6 py-2 rounded-xl"
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
