@@ -1,11 +1,21 @@
 function ProductCard({ product }) {
   return (
-    <div>
-      <img src={product.image} alt={product.title} width="150" />
+    <div className="border rounded-xl p-4 space-y-4">
+      <div className="h-52 flex justify-center items-center">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="h-40 object-contain"
+        />
+      </div>
 
-      <h2>{product.title}</h2>
+      <div className="space-y-2">
+        <h2 className="font-semibold line-clamp-2">{product.title}</h2>
 
-      <p>${product.price}</p>
+        <p className="text-lg font-bold">${product.price}</p>
+
+        <button className="w-full border rounded-lg py-2">View Details</button>
+      </div>
     </div>
   );
 }
