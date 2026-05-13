@@ -6,12 +6,15 @@ import SearchBar from "@/Component/SearchBar";
 function Home() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fecthProducts = async () => {
       const data = await getProducts();
 
       setProducts(data);
+
+      setLoading(false);
     };
     fecthProducts();
   }, []);
@@ -21,6 +24,9 @@ function Home() {
   );
 
   console.log(products);
+  if (loading) {
+    return <h1>Loading products...</h1>;
+  }
 
   return (
     <>
