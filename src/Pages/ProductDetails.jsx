@@ -9,6 +9,7 @@ function ProductDetails() {
 
   const [product, setProduct] = useState(null);
   const [error, setError] = useState("");
+  const [added, setAdded] = useState(false);
   const { dispatch } = useContext(CartContext);
 
   useEffect(() => {
@@ -51,16 +52,25 @@ function ProductDetails() {
           <h2 className="text-xl font-semibold">${product.price}</h2>
 
           <button
-            onClick={() =>
+            onClick={() => {
               dispatch({
                 type: "ADD_TO_CART",
                 payload: product,
-              })
-            }
+              });
+
+              setAdded(true);
+
+              setTimeout(() => {
+                setAdded(false);
+              }, 1500);
+            }}
             className="border px-6 py-2 rounded-xl"
           >
             Add To Cart
           </button>
+          {added && (
+            <p className="text-green-600 font-semibold">Added To Cart</p>
+          )}
         </div>
       </div>
     </div>
