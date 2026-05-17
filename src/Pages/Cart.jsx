@@ -3,6 +3,10 @@ import { CartContext } from "@/Context/CartContext";
 
 function Cart() {
   const { cartItems, dispatch } = useContext(CartContext);
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
+  );
 
   return (
     <div className="p-6">
@@ -24,6 +28,35 @@ function Cart() {
               <h2 className="font-semibold">{item.title}</h2>
 
               <p className="font-bold">${item.price}</p>
+              <p>Quantity: {item.quantity}</p>
+              <div className="flex gap-2">
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: "DECREASE_QUANTITY",
+                      payload: item.id,
+                    })
+                  }
+                  className="border px-3 py-1 rounded"
+                >
+                  -
+                </button>
+
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: "ADD_TO_CART",
+                      payload: item,
+                    })
+                  }
+                  className="border px-3 py-1 rounded"
+                >
+                  +
+                </button>
+              </div>
+              <h2 className="text-2xl font-bold mt-6">
+                Total: ${totalPrice.toFixed(2)}
+              </h2>
               <button
                 onClick={() =>
                   dispatch({
