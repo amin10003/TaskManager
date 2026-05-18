@@ -1,5 +1,7 @@
 export const initialState = {
-    cartItems: [],
+    cartItems: JSON.parse(
+        localStorage.getItem("cartItems")
+    ) || [],
 };
 
 export function cartReducer(state, action) {
@@ -53,6 +55,11 @@ export function cartReducer(state, action) {
                             : item
                     )
                     .filter((item) => item.quantity > 0),
+            };
+        case "CLEAR_CART":
+            return {
+                ...state,
+                cartItems: [],
             };
 
         default:

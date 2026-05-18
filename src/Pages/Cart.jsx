@@ -74,6 +74,16 @@ function Cart() {
                 <button
                   onClick={() =>
                     dispatch({
+                      type: "CLEAR_CART",
+                    })
+                  }
+                  className="mt-4 ml-4 border px-6 py-3 rounded-xl"
+                >
+                  Clear Cart
+                </button>
+                <button
+                  onClick={() =>
+                    dispatch({
                       type: "REMOVE_FROM_CART",
                       payload: item.id,
                     })
