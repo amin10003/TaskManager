@@ -7,7 +7,9 @@ import Checkout from "./Pages/Checkout";
 import ProtectedRoute from "./Component/ProtectedRoute";
 import Login from "./Pages/Login";
 
+
 function App() {
+  const currentDate = new Date().getFullYear()
   return (
     <>
       <NavBar />
@@ -26,6 +28,9 @@ function App() {
           }
         />
       </Routes>
+      <footer className="text-center p-6 border-t mt-10">
+  <p>E-commerce Store © {currentDate}</p>
+</footer>
     </>
   );
 }
